@@ -124,7 +124,8 @@ Aplicação realiza testes unitários com ...
 
 ## Videos
 
-
+## Domain Driven Design
+[Miro DDD](https://miro.com/app/board/uXjVKyVj5Tc=/)
 
 ## Relatório RPID LGPD:
 - [RPID LGPD]()
