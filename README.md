@@ -72,9 +72,11 @@ Este projeto possui a seguinte estrutura de diretórios:
     MARIADB_PORT=3306
     PORT=3000
 ```
-## Modelagem de dados DER
+## 📊 Diagrama Entidade-Relacionamento
 
-![image](https://github.com/user-attachments/assets/9e07b102-0127-45fa-882a-91f6f0254753)
+Aqui está o diagrama entidade-relacionamento (DER) do projeto:
+
+<img src="https://github.com/FiapTechHackathon/Agendamento/blob/Init/Diagramas/DER.svg" alt="Diagrama Entidade-Relacionamento" width="800" />
 
 
 ## Data Base
