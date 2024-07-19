@@ -4,6 +4,7 @@ import AgendaRoutes from './agendaRoutes';
 import AgendamentoRoutes from './agendamentoRoutes';
 import MedicoRoutes from './medicoRoutes';
 import PacienteRoutes from './pacienteRoutes';
+import ClienteDesabilitarRoutes from './clienteDesabilitarRoutes';
 import { IDataBase } from '../../../interfaces/IDataBase';
 
 export default function urls(dbconnection: IDataBase) {
@@ -12,6 +13,7 @@ export default function urls(dbconnection: IDataBase) {
     router.use("/api/v1/", AgendamentoRoutes(dbconnection));
     router.use("/api/v1/", MedicoRoutes(dbconnection));
     router.use("/api/v1/", PacienteRoutes(dbconnection));
+    router.use("/api/v1/", ClienteDesabilitarRoutes(dbconnection));
     return router;
 }
 
