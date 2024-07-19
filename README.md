@@ -133,7 +133,7 @@ Rota para solicitação de exclusão de dados da plataforma:
 
 >Adicionado um metodo POST  - /cliente/desabilitar.
 
-[Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/Init/application/api/routes/clienteDesabilitarRoutes.ts)
+[Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/main/application/api/routes/UsuariosDesabilitarRoutes.ts)
 
 ## AWS :: Componentes
 
