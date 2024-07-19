@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "types": ["jest"],
+        "target": "ES6",
+        "module": "commonjs",
+        "outDir": "src",
+        "typeRoots": ["node_modules/@types"],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        // "types": ["node"]
+    },
+    "include": ["**/*.ts","*.ts", "tests/BDD/pedido.feature", "tests/BDD/exemplo.steps.js", "tests/BDD/step-definitions/pedido.steps.ts"],
+    "exclude": ["node_modules"],
+    "buildOnSave": true,
+    "compileOnSave": true,
+    "lib": [
+        // ... other libs
+        "ES2021.String"
+    ]
+}
