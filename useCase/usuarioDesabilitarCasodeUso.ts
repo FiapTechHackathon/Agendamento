@@ -1,7 +1,7 @@
 import BadRequestError from '../application/exception/BadRequestError';
-import ClienteDesabilitarRepository from '../gateway/ClienteDesabilitarRepository';
+import ClienteDesabilitarRepository from '../gateway/UsuarioDesabilitarRepository';
 
-export class ClienteDesabilitarCasoDeUso {
+export class usuarioDesabilitarCasodeUso {
     static async desabilitar(dadosCliente: { nome: any; endereco: any; telefone: any; pagamento: any }, repository: ClienteDesabilitarRepository) {
       if (!dadosCliente.nome) {
           throw new BadRequestError("Nome é obrigatório.");

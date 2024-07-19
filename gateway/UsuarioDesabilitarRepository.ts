@@ -1,7 +1,7 @@
 import { IDataBase } from "../interfaces/IDataBase";
 import IRepository from "../interfaces/IRepository";
 
-class ClienteDesabilitarRepository implements IRepository {
+class UsuarioDesabilitarRepository implements IRepository {
     public db: IDataBase;
     private nomeTabela = "cliente_desabilitar";
 
@@ -39,4 +39,4 @@ class ClienteDesabilitarRepository implements IRepository {
 
 }
 
-export default ClienteDesabilitarRepository;
+export default UsuarioDesabilitarRepository;

@@ -1,18 +1,18 @@
 import * as HttpStatus from 'http-status';
-import ClienteDesabilitarRepository from "../gateway/ClienteDesabilitarRepository";
+import UsuarioDesabilitarRepository from "../gateway/UsuarioDesabilitarRepository";
 import ResponseAPI from '../adapters/ResponseAPI';
 import { IDataBase } from "../interfaces/IDataBase";
-import { ClienteDesabilitarCasoDeUso } from '../useCase/clienteDesabilitarCasodeUso';
+import { usuarioDesabilitarCasodeUso } from '../useCase/usuarioDesabilitarCasodeUso';
 import ResponseErrors from '../adapters/ResponseErrors';
 
-class ClienteDesabilitarController{
-    private repository: ClienteDesabilitarRepository;
+class UsuarioDesabilitarController{
+    private repository: UsuarioDesabilitarRepository;
 
     /**
      * 
      */
     constructor(dbconnection: IDataBase) {
-        this.repository = new ClienteDesabilitarRepository(dbconnection);
+        this.repository = new UsuarioDesabilitarRepository(dbconnection);
     }
 
     /**
@@ -22,7 +22,7 @@ class ClienteDesabilitarController{
      */
     public disable = async (request, response) => {
         try {
-            const data = await ClienteDesabilitarCasoDeUso.desabilitar(request.params, this.repository);
+            const data = await usuarioDesabilitarCasodeUso.desabilitar(request.params, this.repository);
             response.status(HttpStatus.OK).json(ResponseAPI.data(data));
         } catch (err) {
             ResponseErrors.err(response, err);
@@ -31,4 +31,4 @@ class ClienteDesabilitarController{
 
 }
 
-export default ClienteDesabilitarController;
+export default UsuarioDesabilitarController;
