@@ -1,56 +1,140 @@
-# Agendamento
-# .env
-MARIADB_HOST=maria-db-agendamento
-MARIADB_USER=root
-MARIADB_PASS=12345678
-MARIADB_DATABASE=projeto-agendamento
-MARIADB_PORT=3306
-PORT=3000
+# HACKATHON FIAP
+
+Este projeto foi desenvolvido para HackathonFIAP G23
+
+## 🛠️ Tecnologias
+
+- **Node.js**: Ambiente de execução JavaScript no servidor. [Node.js](https://nodejs.org/)
+- **Express**: Framework para Node.js utilizado para construir a API e gerenciar rotas. [Express](https://expressjs.com/)
+- **JWT (JSON Web Tokens)**: Mecanismo para autenticação e autorização segura. [JWT](https://jwt.io/)
+- **bcryptjs**: Biblioteca para criptografia de senhas. [bcryptjs](https://github.com/dcodeIO/bcrypt.js)
+
+## 🧩 Detalhes
+
+- **Autenticação**: Utilizamos JWT para gerenciar autenticação e sessões dos usuários. 
+- **Criptografia de Senha**: Usamos bcryptjs para criptografar e comparar senhas de forma segura.
+- **Arquitetura Hexagonal**: Adotamos a arquitetura hexagonal (ou Ports and Adapters) para promover uma separação clara entre a lógica de negócios e os detalhes de implementação. Isso permite uma estrutura de código mais modular e facilitada para testes e manutenção
+
+## 📚 Documentação
+
+- [Node.js Documentation](https://nodejs.org/en/docs/)
+- [Express Documentation](https://expressjs.com/en/4x/api.html)
+- [JWT Documentation](https://jwt.io/introduction/)
+- [bcryptjs Documentation](https://github.com/dcodeIO/bcrypt.js)
 
 
-# Script Banco
-CREATE TABLE IF NOT EXISTS Usuario (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    Login VARCHAR(100) UNIQUE NOT NULL,
-    Senha VARCHAR(100) NOT NULL,
-    Tipo ENUM('Medico', 'Paciente') NOT NULL
-);
+## 📁 Estrutura de Diretórios
 
-CREATE TABLE IF NOT EXISTS Medico (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    CRM INT NOT NULL,
-    Estado_CRM CHAR(2) NOT NULL,
-    Nome VARCHAR(100) NOT NULL,
-    Especialidade VARCHAR(100) NOT NULL,
-    ID_Usuario INT NOT NULL,
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID),
-    UNIQUE (CRM, Estado_CRM)
-);
+Este projeto possui a seguinte estrutura de diretórios:
 
-CREATE TABLE IF NOT EXISTS Paciente (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(100) NOT NULL,
-    Email VARCHAR(100) UNIQUE NOT NULL,
-    CPF VARCHAR(11) UNIQUE NOT NULL,
-    ID_Usuario INT NOT NULL,
-    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID)
-);
+```plaintext
+📁 adapters
+|       
+📁 application
+|   📁 api
+|   |   📁 middler
+|   |   |       
+|   |   📁 routes
+|   |           
+|   📁 core
+|   |       
+|   📁 exception
+|           
+📁 controllers
+|        
+📁 Diagramas
+|       
+📁 entity
+|   📁 enum
+|           
+📁 external
+|       
+📁 gateway
+|       
+📁 interfaces
+|          
+📁 testes
+|   📁 domain
+|       📁 entity
+|               
+📁 types
+|       
+📁 useCase
+```
 
-CREATE TABLE IF NOT EXISTS Agenda (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    Data DATE NOT NULL,
-    HoraInicio TIME NOT NULL,
-    HoraFim TIME NOT NULL,
-    Disponivel ENUM('Disponivel', 'Indisponivel') NOT NULL,
-    ID_Medico INT NOT NULL,
-    FOREIGN KEY (ID_Medico) REFERENCES Medico(ID)
-);
+## .ENV Variables
 
-CREATE TABLE IF NOT EXISTS Agendamento_Paciente (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
-    ID_Paciente INT NOT NULL,
-    ID_Agenda INT NOT NULL,
-    Status ENUM('Confirmado', 'Pendente') NOT NULL,
-    FOREIGN KEY (ID_Paciente) REFERENCES Paciente(ID),
-    FOREIGN KEY (ID_Agenda) REFERENCES Agenda(ID)
-);
+```bash
+    MARIADB_HOST=maria-db-agendamento
+    MARIADB_USER=root
+    MARIADB_PASS=12345678
+    MARIADB_DATABASE=projeto-agendamento
+    MARIADB_PORT=3306
+    PORT=3000
+```
+## Modelagem de dados DER
+
+![image](https://github.com/user-attachments/assets/9e07b102-0127-45fa-882a-91f6f0254753)
+
+
+## Data Base
+
+Banco de dados do projeto é feito com MariaDB, dentro do arquivo de conexão com o banco de dados existe um processo no qual já é criado toda a base de dados assim que for executado o build do projeto.
+Cada nova tabela desenvolvida DEVE ser adicionado o create no arquivo para que seja atualizado em todas as imagens.
+
+```bash
+  path: external/mariadbConnection.ts
+  example:
+  await db.query(`
+         CREATE TABLE IF NOT EXISTS Usuario (
+            ID INT PRIMARY KEY AUTO_INCREMENT,
+            Senha VARCHAR(100) NOT NULL
+        );
+
+        ...
+  `);
+```
+
+## Install Application
+
+1. Docker DEVE estar instalado na sua maquina.
+
+2. Baixar o Projeto na sua maquina
+
+```bash
+git clone https://github.com/FiapTechHackathon/Agendamento.git
+```
+
+3. Build Project
+   `Para Criar o projeto digite o codigo abaixo no console`
+
+```bash
+docker-compose up -d --build
+
+## Running tests
+
+Aplicação realiza testes unitários com ...
+
+```bash
+    npm run test
+```
+
+
+## Videos
+
+
+
+## Relatório RPID LGPD:
+- [RPID LGPD]()
+
+Rota para solicitação de exclusão de dados da plataforma:
+
+>Adicionado um metodo POST  - /cliente/desabilitar.
+
+[Rota adicionada](https://github.com/brunoblauzius-fiap/pedido/blob/e253ee75b1b2c773edbd59f6a2708d764e254d09/application/api/routes/clienteDesabilitarRoutes.ts)
+
+## AWS :: Componentes
+
+
+## DATA ENGENERING :: Componentes
+
