@@ -172,3 +172,7 @@ Foi pensando desta forma pelo primeiro investimento Health&Med não ser tão alt
 
 ## DATA ENGENERING :: Componentes
 ![DATA ENGENERING](Data%20engenering.png)
+
+Acima esta composto a nossa engenharia de banco de dados, como podemos ver teremos uma instancia de banco de dados Aurora e estaremos usando a engine do mysql para os cluster de bancos de dados.
+
+Adicionei tambem o S3 pos podemos usar ele no sistema de armazenamento de dados, se por acaso em algum momento A Health&Med criar uma equipe de B.I sendo possivel assim criar um fluxo de DataWare House com o GLUE consultando dados de um BUCKET, esse processo será robusto e mais barato para a empresa.
