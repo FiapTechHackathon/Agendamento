@@ -2,7 +2,7 @@ import Medico from "../entity/medico";
 import IRepository from "./IRepository";
 
 interface IMedico extends IRepository {
-    getAll(): Promise<Medico[]>;
+    getAll(param): Promise<Medico[]>;
     findById(id: number): Promise<Medico>;
     findByCRM(crm: number): Promise<Medico>;
     store(medico: Medico): Promise<Medico>;

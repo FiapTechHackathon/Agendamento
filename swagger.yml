@@ -120,6 +120,12 @@ paths:
       description: Recupera uma lista de médicos.
       tags:
         - "medico"
+      parameters:
+        - in: query
+          name: especialidade
+          schema:
+            type: string
+          description: recupera os dados de um medico pela especialidade
       responses:
         "200":
           description: Retorna uma lista de itens
@@ -146,6 +152,28 @@ paths:
                   type: string
                 especialidade:
                   type: string
+                  enum:
+                    - CARDIOLOGIA
+                    - DERMATOLOGIA
+                    - GINECOLOGIA
+                    - NEUROLOGIA
+                    - ORTOPEDIA
+                    - PEDIATRIA
+                    - PSIQUIATRIA
+                    - REUMATOLOGIA
+                    - UROLOGIA
+                    - ENDOCRINOLOGIA
+                    - OTORRINOLARINGOLOGIA
+                    - OFTALMOLOGIA
+                    - ANESTESIOLOGIA
+                    - HEMATOLOGIA
+                    - CLINICA GERAL
+                    - NUTROLOGIA
+                    - ALERGOLOGIA
+                    - GASTROENTEROLOGIA
+                    - PNEUMOLOGIA
+                    - CIRURGIA
+                    - MEDICINA FAMILIAR
                 Estado_CRM:
                   type: string
                 senha:
@@ -506,3 +534,5 @@ components:
             - Pendente
             - Cancelado
             - Recusado
+security:
+  - BearerAuth: []
