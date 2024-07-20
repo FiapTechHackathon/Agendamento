@@ -9,7 +9,7 @@ jobs:
   Build-and-Test:
     name: Construindo Imagem
     runs-on: ubuntu-latest
-    environment: projeto tech
+    environment: credentials_health_med
     steps:
     -
       name: Checkout
@@ -54,20 +54,19 @@ jobs:
   Test:
     name: "Testes Unitários"
     runs-on: ubuntu-latest
-    environment: projeto tech
+    environment: credentials_health_med
     needs: Build-and-Test
     steps:
     - uses: actions/checkout@v3
 
     - name: "Construir imagem Docker"
       run: |
-        docker network create microservice-fiap
         docker-compose up -d
-      env:
-        MP_URL: ${{ vars.MP_URL }}
-        MP_CLIENT_SECRET: ${{ secrets.MP_CLIENT_SECRET }}
-        MP_CLIENT_ID: ${{ secrets.MP_CLIENT_ID }}
-        MP_NOTIFICATION_URL: ${{ vars.MP_NOTIFICATION_URL }}
+      # env:
+      #   MP_URL: ${{ vars.MP_URL }}
+      #   MP_CLIENT_SECRET: ${{ secrets.MP_CLIENT_SECRET }}
+      #   MP_CLIENT_ID: ${{ secrets.MP_CLIENT_ID }}
+      #   MP_NOTIFICATION_URL: ${{ vars.MP_NOTIFICATION_URL }}
         
     - name: "Unit Test" 
       run: docker run docker.io/library/pedido_web npm test
@@ -75,7 +74,7 @@ jobs:
   sonarcloud:
     name: SonarCloud
     needs: [Build-and-Test, Test]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -91,7 +90,7 @@ jobs:
     name: Deploy em Desenvolvimento
     if: ${{github.ref_name == 'dev'}}
     needs : [Build-and-Test, Test, sonarcloud]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - 
@@ -105,7 +104,7 @@ jobs:
     if: ${{github.ref_name == 'main'}}
     name: Deploy em Produção
     needs: [Build-and-Test, Test, sonarcloud]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - name: Pré Deploy
