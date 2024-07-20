@@ -4,7 +4,7 @@ Este projeto foi desenvolvido para HackathonFIAP G23
 
 ## 🛠️ Tecnologias
 
-- **Node.js**: Ambiente de execução JavaScript no servidor. [Node.js](https://nodejs.org/)
+- **Node.js**: Ambiente de execução Typescript no servidor. [Node.js](https://nodejs.org/)
 - **Express**: Framework para Node.js utilizado para construir a API e gerenciar rotas. [Express](https://expressjs.com/)
 - **JWT (JSON Web Tokens)**: Mecanismo para autenticação e autorização segura. [JWT](https://jwt.io/)
 - **bcryptjs**: Biblioteca para criptografia de senhas. [bcryptjs](https://github.com/dcodeIO/bcrypt.js)
