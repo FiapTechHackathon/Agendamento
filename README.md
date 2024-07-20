@@ -154,9 +154,17 @@ Aplicação realiza testes unitários com ...
   "senha": "senha123"
 }
 ```
-### Recupera todos os Usuário de medico cadastrados
+> ⚠️ _Consulte o [ENUM](https://github.com/FiapTechHackathon/Agendamento/blob/swagger/entity/enum/especialidadeMedico.ts) de especialidades para valores válidos.
 
-**Rota:** `GET /medico`
+
+### Recupera todos os Usuário de medico cadastrados
+ 
+- **Rota sem filtro:** `GET /medico`
+
+- **Rota com filtro:** `GET /medico?especialidade=Cardiologia`
+
+> ⚠️ _Consulte o [ENUM](https://github.com/FiapTechHackathon/Agendamento/blob/swagger/entity/enum/especialidadeMedico.ts) de especialidades para valores válidos.
+
 
 ### Cadastra uma nova agenda para o médico
 **Rota:** `POST /agenda`
