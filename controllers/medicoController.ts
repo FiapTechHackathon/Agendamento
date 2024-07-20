@@ -31,21 +31,20 @@ class MedicoController {
 
     public store = async (request, response) => {
         try {
-            console.log('usuario');
+
             let usuario = new Usuario(
                 request.body.senha
             );
-            console.log('usuario');
+
             let medico = new Medico(
                 request.body.nome,
                 request.body.crm,
                 request.body.especialidade,
                 request.body.Estado_CRM
             );
-            console.log('usuari3');
 
-            console.log(usuario);
-            console.log(medico);
+
+
             usuario = await UsuarioCasoDeUso.criarUsuarioMedico(usuario,medico, this.repository,  this.repositoryUsuario);
           
             medico.idUsuario=usuario.id;

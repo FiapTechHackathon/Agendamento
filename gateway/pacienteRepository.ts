@@ -35,7 +35,7 @@ class PacienteRepository implements IPaciente {
     
 
     public store = async (paciente: Paciente): Promise<Paciente> => {
-        console.log('store',paciente);
+
         const data = await this.db.store(this.nomeTabela, [
             { campo: "nome", valor: paciente.nome },
             { campo: "cpf", valor: paciente.cpf },
@@ -43,7 +43,7 @@ class PacienteRepository implements IPaciente {
             { campo: "ID_Usuario", valor: paciente.idUsuario },
         ]);
         paciente.id = parseInt(data.insertId);
-        console.log('store2',paciente);
+
         return paciente;
     }
 
@@ -66,7 +66,7 @@ class PacienteRepository implements IPaciente {
     public findByCPF = async (cpf: string): Promise<Paciente> => {
         const result = await this.db.find(this.nomeTabela, null, [{ campo: "CPF", valor: cpf }]);
         if (!result || result.length === 0) return null;
-        console.log(cpf);
+
         const data = result[0];
         const paciente = new Paciente(data.Nome, data.CPF, data.Email, data.ID_Usuario);
         paciente.id = data.id;
@@ -74,14 +74,14 @@ class PacienteRepository implements IPaciente {
     }
 
     public findByEmail = async (email: string): Promise<Paciente> => {
-        console.log(email);
+
         const result = await this.db.find(this.nomeTabela, null, [{ campo: "email", valor: email }]);
-        console.log('result',result);
+
         if (!result || result.length === 0) return null;
 
         const data = result[0];
-        console.log('result1',result[0]);
-        console.log('result2',data.Nome);
+
+
         const paciente = new Paciente(data.Nome, data.CPF, data.Email, data.ID_Usuario);
         paciente.id = data.ID;
         return paciente;

@@ -35,7 +35,6 @@ class AgendaController {
                 request.body.IdMedico,
                 request.body.Valor 
             );
-            console.log(agenda)
             agenda = await AgendaCasoDeUso.criarAgenda(agenda, this.repository);
             response.status(HttpStatus.OK).json(agenda);
         } catch (err) {

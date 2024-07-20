@@ -40,11 +40,11 @@ class MedicoRepository implements IMedico {
 
 
         if (!result || result.length === 0) return null;
-        console.log(result)
+
         return result.map(data => {
             const medico = new Medico(data.Nome, data.CRM, data.Especialidade,data.Estado_CRM, data.ID_Usuario);
             medico.id = data.ID;
-            console.log(medico)
+
             return medico;
         });
     }

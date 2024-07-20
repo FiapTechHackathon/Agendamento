@@ -42,7 +42,7 @@ class PacienteController {
             usuario = await UsuarioCasoDeUso.criarUsuarioPaciente(usuario,paciente, this.repository,  this.repositoryUsuario);
           
             paciente.idUsuario=usuario.id;
-            console.log('2',paciente);
+
             paciente = await PacienteCasoDeUso.criarPaciente(paciente, this.repository);
             response.status(HttpStatus.OK).json(paciente);
 

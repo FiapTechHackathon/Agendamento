@@ -10,11 +10,6 @@ class MysqlConnection
     }
 
     async connect(){
-        console.log( process.env.MARIADB_HOST);
-        console.log( process.env.MARIADB_USER);
-        console.log( process.env.MARIADB_PASS);
-        console.log( process.env.MARIADB_DATABASE);
-        console.log( process.env.MARIADB_PORT);
         this.connection = await mariadb.createConnection({            
             host: process.env.MARIADB_HOST,
             user: process.env.MARIADB_USER,

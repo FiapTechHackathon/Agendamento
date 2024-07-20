@@ -23,7 +23,7 @@ export class MedicoCasoDeUso {
     static async autenticarMedico(crm: number,senha:string, usuarioRepository:IUsuario ,medicoRepository: IMedico) {
         
         let medico = await medicoRepository.findByCRM(crm);
-        console.log(medico);
+
         if (medico === null) {
             throw new BadRequestError("CRM não cadastrado.");
         }

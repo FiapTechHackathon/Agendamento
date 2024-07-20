@@ -60,7 +60,6 @@ class AgendaRepository implements IAgenda {
             { campo: "Valor", valor: agenda.Valor }
         ], [{ campo: "id", valor: id }]);
         agenda.id = id;
-        console.log(agenda)
         return agenda;
     }
 

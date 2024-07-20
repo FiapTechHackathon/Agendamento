@@ -15,8 +15,7 @@ export class UsuarioCasoDeUso {
     
     static async criarUsuarioMedico(usuario: Usuario,medico: Medico, medicoRepository:IMedico, usuarioRepository:IUsuario) {
         let crm = await medicoRepository.findByCRM(parseInt(medico.crm));
-        console.log(crm);
-        console.log(medico);
+
         if (crm != null) {
             throw new BadRequestError("CRM já cadastrado.");
         }

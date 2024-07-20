@@ -38,7 +38,7 @@ class paciente {
     }
   
     private isValidCpf(): boolean {
-      console.log(this.cpf);
+
       return cpfValidator.isValid(this.cpf);
     }
   
