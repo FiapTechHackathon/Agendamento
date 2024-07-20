@@ -69,7 +69,7 @@ jobs:
       #   MP_NOTIFICATION_URL: ${{ vars.MP_NOTIFICATION_URL }}
         
     - name: "Unit Test" 
-      run: docker run docker.io/library/pedido_web npm test
+      run: docker run docker.io/library/agendamento_web npm test
    
   sonarcloud:
     name: SonarCloud
