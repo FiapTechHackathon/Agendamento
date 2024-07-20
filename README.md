@@ -171,4 +171,4 @@ A ideia será cria um monolito modularizado, com seus contextos bem separados pa
 Foi pensando desta forma pelo primeiro investimento Health&Med não ser tão alto então o capacity para desenvolvimento teve que ser bem pensando e reduzido nessa primeira versão, logo assim será mais simples controlar e desenvolver a aplicação e colocar o mais rapido possivel no mercado para validar o negócio.
 
 ## DATA ENGENERING :: Componentes
-
+![DATA ENGENERING](Data%20engenering.png)
