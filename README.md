@@ -177,6 +177,16 @@ Acima esta composto a nossa engenharia de banco de dados, como podemos ver terem
 
 Adicionei tambem o S3 pos podemos usar ele no sistema de armazenamento de dados, se por acaso em algum momento A Health&Med criar uma equipe de B.I sendo possivel assim criar um fluxo de DataWare House com o GLUE consultando dados de um BUCKET, esse processo será robusto e mais barato para a empresa.
 
+## Pipeline de CI.
+Na Imagem esta sendo mostrado o Pipeline de DEV com testes automatizados e também com Sonar, no caso de DEV não enviamos requisição nenhuma para deploy, somente em MAIN que montamos no kubernets a nossa imagem.
+
+[Ver o Arquivo da pipeline](https://github.com/FiapTechHackathon/Agendamento/blob/main/.github/workflows/main.yml)
+
+![alt text](image.png)
+
+## Pipeline de CD.
+
+
 ## QUALIDADE DE CODIGO PROJETO
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=FiapTechHackathon_Agendamento)
