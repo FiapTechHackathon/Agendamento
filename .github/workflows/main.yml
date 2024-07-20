@@ -9,7 +9,7 @@ jobs:
   Build-and-Test:
     name: Construindo Imagem
     runs-on: ubuntu-latest
-    environment: projeto tech
+    environment: credentials_health_med
     steps:
     -
       name: Checkout
@@ -54,7 +54,7 @@ jobs:
   Test:
     name: "Testes Unitários"
     runs-on: ubuntu-latest
-    environment: projeto tech
+    environment: credentials_health_med
     needs: Build-and-Test
     steps:
     - uses: actions/checkout@v3
@@ -75,7 +75,7 @@ jobs:
   sonarcloud:
     name: SonarCloud
     needs: [Build-and-Test, Test]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -91,7 +91,7 @@ jobs:
     name: Deploy em Desenvolvimento
     if: ${{github.ref_name == 'dev'}}
     needs : [Build-and-Test, Test, sonarcloud]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - 
@@ -105,7 +105,7 @@ jobs:
     if: ${{github.ref_name == 'main'}}
     name: Deploy em Produção
     needs: [Build-and-Test, Test, sonarcloud]
-    environment: projeto tech
+    environment: credentials_health_med
     runs-on: ubuntu-latest
     steps:
       - name: Pré Deploy
