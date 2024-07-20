@@ -121,7 +121,120 @@ Aplicação realiza testes unitários com ...
     npm run test
 ```
 
+## 📋 Rotas da API
 
+### Criar Usuário de Paciente
+
+**Rota:** `POST /paciente`
+
+**Request:**
+```json
+{
+  "id": 1,
+  "nome": "João da Silva",
+  "cpf": "57396749050",
+  "email": "joao@example.com",
+  "senha": "senha123",
+}
+```
+### Recupera todos os Usuário de Paciente cadastrados
+
+**Rota:** `GET /paciente`
+
+### Criar Usuário de Medico
+**Rota:** `POST /medico`
+
+**Request:**
+```json
+{
+  "id": 1,
+  "nome": "Dr. Ana Maria",
+  "crm": "123456",
+  "especialidade": "Cardiologia",
+  "senha": "senha123"
+}
+```
+### Recupera todos os Usuário de medico cadastrados
+
+**Rota:** `GET /medico`
+
+### Cadastra uma nova agenda para o médico
+**Rota:** `POST /agenda`
+
+**Request:**
+```json
+{
+  "Data": "2024-07-20",
+  "HoraInicio": "string",
+  "HoraFim": "string",
+  "disponivel": "disponivel",
+  "IdMedico": 1,
+  "Valor": 200
+}
+```
+
+### Editar uma agenda para o médico
+**Rota:** `PUT /agenda/{id}`
+
+**Request:**
+```json
+{
+  "Data": "2024-07-20",
+  "HoraInicio": "string",
+  "HoraFim": "string"
+}
+```
+### Recupera uma lista de agenda disponíveis.
+
+**Rota:** `GET /agenda`
+
+### Cadastra um novo agendamento para o paciente
+**Rota:** `POST /agendamento`
+
+**Request:**
+```json
+{
+  "ID_Paciente": 1,
+  "ID_Agenda": 1,
+  "Status": "PENDENTE",
+  "Justificativa": "string"
+}
+```
+
+### O medico Aceita/Recusa agendamento do paciente
+**Rota:** `PUT /agendamento/status`
+
+**Request:**
+```json
+{
+  "ID_Paciente": 1,
+  "ID_Agenda": 1,
+  "Status": "Confirmado"
+}
+```
+
+### Autentica Paciente
+
+**Rota:** `GET /paciente/autentica`
+
+**Request:**
+```json
+{
+  "cpf": "10457867051",
+  "senha": "1234"
+}
+```
+### Autentica medico
+
+**Rota:** `GET /medico/autentica`
+
+**Request:**
+```json
+{
+  "crm": 1010,
+  "senha": "1234"
+}
+```
 ## Videos
 
 ## Domain Driven Design
