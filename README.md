@@ -165,5 +165,10 @@ Será configurada uma VPC e SUbnets para manter a aplicação em um ambiente seg
 ### Versão MVP
 ![AWS Componentes versão full](AWS%20-%20Componentes%20versão%20mvp.drawio.png)
 
+Uma Versão minimalista será criada para que possamos validar a aplicação como um todo, se será bem aceita no mercado e se estaremos no caminho certo.
+
+A ideia será cria um monolito modularizado, com seus contextos bem separados para ficar mais simples e facil o estrangulamento e criar os microserços e foram descritos na versão mais robusta.
+Foi pensando desta forma pelo primeiro investimento Health&Med não ser tão alto então o capacity para desenvolvimento teve que ser bem pensando e reduzido nessa primeira versão, logo assim será mais simples controlar e desenvolver a aplicação e colocar o mais rapido possivel no mercado para validar o negócio.
+
 ## DATA ENGENERING :: Componentes
 
