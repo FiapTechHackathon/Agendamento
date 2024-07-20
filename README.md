@@ -123,6 +123,29 @@ Aplicação realiza testes unitários com ...
 
 ## 📋 Rotas da API
 
+### Primeiros Passos
+
+1. Acesse o link do Swagger: [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/).
+
+2. Execute a autenticação:
+   - **Rota:** `POST /user/auth`
+
+3. **Response:** Após a autenticação, mostrara um token no seguinte formato:
+   ```json
+   {
+     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjM2LCJleHAiOjE3MjE1MTI4MzY0ODEsIm5hbWUiOiJCcnVubyBCbGF1eml1cyBzY2h1aW5kdCIsImVtYWlsIjoiYnJ1bm9ibGF1eml1c0BnbWFpbC5jb20ifQ.PqvviWP_vIFcbPOhtZrD2bgZ2CFEGimYmhCWR4v-gNI",
+     "expires_in": 3600,
+     "scope": "customScope",
+     "token_type": "Bearer"
+   }
+
+4. No Swagger, clique no botão `Authorize` no canto superior direito da interface.
+5. Na janela de autorização que aparece, insira o valor do `access_token` obtido na resposta da autenticação.
+6. Clique em `Authorize` e depois feche a janela de autorização.
+7. Adicione o valor no campo e clique em `Authorize` e depois `Close`
+8. Após a autorização, você pode testar as rotas protegidas da `API`.
+
+
 ### Criar Usuário de Paciente
 
 **Rota:** `POST /paciente`
