@@ -137,7 +137,33 @@ Rota para solicitação de exclusão de dados da plataforma:
 [Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/main/application/api/routes/UsuariosDesabilitarRoutes.ts)
 
 ## AWS :: Componentes
+### Versão Completa
+![AWS Componentes versão full](AWS%20-%20Componentes%20versão%20full.drawio.png)
 
+#### SES
+Adicionado o SES para envio de emails para confirmação de consulta e envio de link e Recusa da consulta ou qualquer outra notificação que sejamos realizar. O serviço tem um free tire de 50 mil envios antes de começar a ser cobrado.
+
+#### S3 
+Aqui adicionaremos os arquivos dos referentes ao prontuário médico de cada paciente, esse serviço em curta e longa escala se torna o mais barato quando se refere ao gerenciamento de arquivos, alem disso temos alta disponibilidade e uma segurança extra pois podemos configura-lo para que somente a aplicação tenha permissão de abrir e por um periodo de tempo.
+
+#### Apigateway, lambda e cognito
+Nessa parate da aplicação optamos pela simplicidade do servless usando o lambda sendo acionado por uma apigateway, nela para termos mais seguraça pode adicionar algumas retrições de acesso ja predefinidas pela AWS e por ultimo o cognito para gerenciamento de usuario na aplicação, esse serviçon se torna barato e robusto ao mesmo tempo visto que só sera utilizado somente quando o usuario for logar no sistema.
+
+#### Aurora e MYSQL
+Iremos utilizar o Aurora com o MYSQL para guardar os dados e só sera possivel acessão pela VPC ou usando o Bastion para abrir acesso externo para usuários com perfil administrativo da empresa, o Aurora é usado para escalar horizontalmente o banco de dados de acordo com a demanda ou seja ele não aumentara o espaço em disco mais sim as CPUs para processar mais rapido a informação e assim nao gerando gargalo.
+
+#### EKS, ECR
+Será utilizado o EKS pois iremos criar varias aplicações tanto de back quando de front e com ele teremos a escalability necessária para gerenciamento de pods, assim garantindo a alta demanda de requisição. A principio elas terão configurações diferentes aplicação aonde iremos disponibilizar os serviços de prontuários, Consultas e Agendamento terá mais pods e mais CPU pois tendem a ser mais requisitadas.
+Já a de medicos e pacientes terá uma configuração mais enxuta sendo possivel alterações se for preciso.
+
+ECR iremos guardar as versões das imagens geradas em cada deploy.
+
+#### VPC e Subnets 
+Será configurada uma VPC e SUbnets para manter a aplicação em um ambiente seguro, a seguraça do servidor será garantida desta forma e somente usuários com autorização e aplicações poderão acessar os componentes dessa arquitetura.
+
+
+### Versão MVP
+![AWS Componentes versão full](AWS%20-%20Componentes%20versão%20mvp.drawio.png)
 
 ## DATA ENGENERING :: Componentes
 
