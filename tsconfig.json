@@ -3,6 +3,7 @@
         "types": ["jest"],
         "target": "ES6",
         "module": "commonjs",
+        "esModuleInterop": true,
         "outDir": "src",
         "typeRoots": ["node_modules/@types"],
         "experimentalDecorators": true,
