@@ -276,7 +276,7 @@ Aplicação realiza testes unitários com ...
 
 Rota para solicitação de exclusão de dados da plataforma:
 
->Adicionado um metodo POST  - /cliente/desabilitar.
+>Adicionado um metodo POST  - /usuario/desabilitar.
 
 [Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/main/application/api/routes/UsuariosDesabilitarRoutes.ts)
 
