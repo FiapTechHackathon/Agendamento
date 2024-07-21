@@ -12,11 +12,11 @@ export class PacienteCasoDeUso {
     }
 
     static async criarPaciente(paciente: Paciente, pacienteRepository: IPaciente) {
-        console.log('criarpaciente',paciente);
+
         let cpf = await pacienteRepository.findByCPF(paciente.cpf);
-        console.log('h',cpf);
+
         let email = await pacienteRepository.findByEmail(paciente.email);
-        console.log('j',email);
+
         if (email != null) {
             throw new BadRequestError("E-mail já cadastrado.");
         } else if (cpf != null) {
@@ -47,7 +47,7 @@ export class PacienteCasoDeUso {
     static async autenticarPaciente(cpf: string,senha:string, usuarioRepository:IUsuario ,pacienteRepository: IPaciente) {
         
         let paciente = await pacienteRepository.findByCPF(cpf);
-        console.log(cpf);
+
         if (paciente === null) {
             throw new BadRequestError("CPF não cadastrado.");
         }

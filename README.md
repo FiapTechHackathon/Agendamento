@@ -4,7 +4,7 @@ Este projeto foi desenvolvido para HackathonFIAP G23
 
 ## 🛠️ Tecnologias
 
-- **Node.js**: Ambiente de execução JavaScript no servidor. [Node.js](https://nodejs.org/)
+- **Node.js**: Ambiente de execução Typescript no servidor. [Node.js](https://nodejs.org/)
 - **Express**: Framework para Node.js utilizado para construir a API e gerenciar rotas. [Express](https://expressjs.com/)
 - **JWT (JSON Web Tokens)**: Mecanismo para autenticação e autorização segura. [JWT](https://jwt.io/)
 - **bcryptjs**: Biblioteca para criptografia de senhas. [bcryptjs](https://github.com/dcodeIO/bcrypt.js)
@@ -121,7 +121,151 @@ Aplicação realiza testes unitários com ...
     npm run test
 ```
 
+## 📋 Rotas da API
 
+### Primeiros Passos
+
+1. Acesse o link do Swagger: [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/).
+
+2. Execute a autenticação:
+   - **Rota:** `POST /user/auth`
+
+3. **Response:** Após a autenticação, mostrara um token no seguinte formato:
+   ```json
+   {
+     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjM2LCJleHAiOjE3MjE1MTI4MzY0ODEsIm5hbWUiOiJCcnVubyBCbGF1eml1cyBzY2h1aW5kdCIsImVtYWlsIjoiYnJ1bm9ibGF1eml1c0BnbWFpbC5jb20ifQ.PqvviWP_vIFcbPOhtZrD2bgZ2CFEGimYmhCWR4v-gNI",
+     "expires_in": 3600,
+     "scope": "customScope",
+     "token_type": "Bearer"
+   }
+
+4. No Swagger, clique no botão `Authorize` no canto superior direito da interface.
+5. Na janela de autorização que aparece, insira o valor do `access_token` obtido na resposta da autenticação.
+6. Clique em `Authorize` e depois feche a janela de autorização.
+7. Adicione o valor no campo e clique em `Authorize` e depois `Close`
+8. Após a autorização, você pode testar as rotas protegidas da `API`.
+
+
+### Criar Usuário de Paciente
+
+**Rota:** `POST /paciente`
+
+**Request:**
+```json
+{
+  "id": 1,
+  "nome": "João da Silva",
+  "cpf": "57396749050",
+  "email": "joao@example.com",
+  "senha": "senha123",
+}
+```
+### Recupera todos os Usuário de Paciente cadastrados
+
+**Rota:** `GET /paciente`
+
+### Criar Usuário de Medico
+**Rota:** `POST /medico`
+
+**Request:**
+```json
+{
+  "id": 1,
+  "nome": "Dr. Ana Maria",
+  "crm": "123456",
+  "especialidade": "Cardiologia",
+  "senha": "senha123"
+}
+```
+> ⚠️ _Consulte o [ENUM](https://github.com/FiapTechHackathon/Agendamento/blob/swagger/entity/enum/especialidadeMedico.ts) de especialidades para valores válidos.
+
+
+### Recupera todos os Usuário de medico cadastrados
+ 
+- **Rota sem filtro:** `GET /medico`
+
+- **Rota com filtro:** `GET /medico?especialidade=Cardiologia`
+
+> ⚠️ _Consulte o [ENUM](https://github.com/FiapTechHackathon/Agendamento/blob/swagger/entity/enum/especialidadeMedico.ts) de especialidades para valores válidos.
+
+
+### Cadastra uma nova agenda para o médico
+**Rota:** `POST /agenda`
+
+**Request:**
+```json
+{
+  "Data": "2024-07-20",
+  "HoraInicio": "string",
+  "HoraFim": "string",
+  "disponivel": "disponivel",
+  "IdMedico": 1,
+  "Valor": 200
+}
+```
+
+### Editar uma agenda para o médico
+**Rota:** `PUT /agenda/{id}`
+
+**Request:**
+```json
+{
+  "Data": "2024-07-20",
+  "HoraInicio": "string",
+  "HoraFim": "string"
+}
+```
+### Recupera uma lista de agenda disponíveis.
+
+**Rota:** `GET /agenda`
+
+### Cadastra um novo agendamento para o paciente
+**Rota:** `POST /agendamento`
+
+**Request:**
+```json
+{
+  "ID_Paciente": 1,
+  "ID_Agenda": 1,
+  "Status": "PENDENTE",
+  "Justificativa": "string"
+}
+```
+
+### O medico Aceita/Recusa agendamento do paciente
+**Rota:** `PUT /agendamento/status`
+
+**Request:**
+```json
+{
+  "ID_Paciente": 1,
+  "ID_Agenda": 1,
+  "Status": "Confirmado"
+}
+```
+
+### Autentica Paciente
+
+**Rota:** `GET /paciente/autentica`
+
+**Request:**
+```json
+{
+  "cpf": "10457867051",
+  "senha": "1234"
+}
+```
+### Autentica medico
+
+**Rota:** `GET /medico/autentica`
+
+**Request:**
+```json
+{
+  "crm": 1010,
+  "senha": "1234"
+}
+```
 ## Videos
 
 ## Domain Driven Design
@@ -132,7 +276,7 @@ Aplicação realiza testes unitários com ...
 
 Rota para solicitação de exclusão de dados da plataforma:
 
->Adicionado um metodo POST  - /cliente/desabilitar.
+>Adicionado um metodo POST  - /usuario/desabilitar.
 
 [Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/main/application/api/routes/UsuariosDesabilitarRoutes.ts)
 

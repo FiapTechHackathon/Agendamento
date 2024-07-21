@@ -10,13 +10,41 @@ class MedicoRepository implements IMedico {
         this.db = database;
     }
 
-    public getAll = async (): Promise<Medico[]> => {
-        const result = await this.db.find(this.nomeTabela,null,null);
+    public getAll = async (params): Promise<Medico[] | null> => {
+
+        let CONDITIONS = false;
+        let result;
+        let filtroCampo, filtroValor;
+
+        if (typeof params.especialidade != 'undefined' && params.especialidade != "") {
+            filtroCampo = 'Especialidade'; 
+            filtroValor= params.especialidade;
+            CONDITIONS = true;
+        }
+
+        if (!CONDITIONS) {
+            result = await this.db.find(
+                this.nomeTabela,
+                null,
+                null
+            );
+        }
+        else {
+            result = await this.db.find(
+                this.nomeTabela,
+                null,
+                [{ campo: filtroCampo, valor: filtroValor}]
+            );
+        }
+       
+
+
         if (!result || result.length === 0) return null;
 
         return result.map(data => {
             const medico = new Medico(data.Nome, data.CRM, data.Especialidade,data.Estado_CRM, data.ID_Usuario);
-            medico.id = data.id;
+            medico.id = data.ID;
+
             return medico;
         });
     }
@@ -27,7 +55,7 @@ class MedicoRepository implements IMedico {
 
         const data = result[0];
         const medico = new Medico(data.Nome, data.CRM, data.Especialidade,data.Estado_CRM, data.ID_Usuario);
-        medico.id = data.id;
+        medico.id = data.ID;
         return medico;
     }
     public findByCRM = async (crm: number): Promise<Medico> => {
@@ -36,7 +64,7 @@ class MedicoRepository implements IMedico {
 
         const data = result[0];
         const medico = new Medico(data.Nome, data.CRM, data.Especialidade,data.Estado_CRM, data.ID_Usuario);
-        medico.id = data.id;
+        medico.id = data.ID;
         return medico;
     }
 

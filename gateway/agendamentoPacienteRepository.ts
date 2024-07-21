@@ -47,7 +47,7 @@ class AgendamentoPacienteRepository implements IAgendamentoPaciente {
     }
 
     public update = async (agendamento: AgendamentoPaciente): Promise<AgendamentoPaciente> => {
-        console.log(agendamento)
+
         await this.db.update(this.nomeTabela, [
             { campo: "Status", valor: agendamento.status },
             { campo: "Justificativa", valor: agendamento.Justificativa }],
@@ -56,7 +56,7 @@ class AgendamentoPacienteRepository implements IAgendamentoPaciente {
     }
 
     public aceitaRecusaAgendamento = async (agendamento: AgendamentoPaciente): Promise<AgendamentoPaciente> => {
-        console.log(agendamento)
+
         await this.db.update(this.nomeTabela, [
             { campo: "Status", valor: agendamento.status }],
             [{ campo: "ID_Agenda", valor: agendamento.idAgenda }]);

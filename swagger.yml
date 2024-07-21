@@ -91,16 +91,28 @@ paths:
                 - cpf
                 - senha
       responses:
-        "200":
-          description: OK
+        '200':
+          description: Resultado da autenticação
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/pacientes"
-        "400":
-          description: Bad Request
-        "401":
-          description: Unauthorized
+                type: object
+                properties:
+                  autenticado:
+                    type: boolean
+                    description: Resultado da autenticação
+                    example: true
+        '401':
+          description: Autenticação falhou
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Resultado da autenticação
+                    example: false
   # medico
   /medico:
     get:
@@ -108,6 +120,12 @@ paths:
       description: Recupera uma lista de médicos.
       tags:
         - "medico"
+      parameters:
+        - in: query
+          name: especialidade
+          schema:
+            type: string
+          description: recupera os dados de um medico pela especialidade
       responses:
         "200":
           description: Retorna uma lista de itens
@@ -134,6 +152,28 @@ paths:
                   type: string
                 especialidade:
                   type: string
+                  enum:
+                    - CARDIOLOGIA
+                    - DERMATOLOGIA
+                    - GINECOLOGIA
+                    - NEUROLOGIA
+                    - ORTOPEDIA
+                    - PEDIATRIA
+                    - PSIQUIATRIA
+                    - REUMATOLOGIA
+                    - UROLOGIA
+                    - ENDOCRINOLOGIA
+                    - OTORRINOLARINGOLOGIA
+                    - OFTALMOLOGIA
+                    - ANESTESIOLOGIA
+                    - HEMATOLOGIA
+                    - CLINICA GERAL
+                    - NUTROLOGIA
+                    - ALERGOLOGIA
+                    - GASTROENTEROLOGIA
+                    - PNEUMOLOGIA
+                    - CIRURGIA
+                    - MEDICINA FAMILIAR
                 Estado_CRM:
                   type: string
                 senha:
@@ -173,16 +213,28 @@ paths:
                 - crm
                 - senha
       responses:
-        "200":
-          description: OK
+        '200':
+          description: Resultado da autenticação
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/medico"
-        "400":
-          description: Bad Request
-        "401":
-          description: Unauthorized
+                type: object
+                properties:
+                  autenticado:
+                    type: boolean
+                    description: Resultado da autenticação
+                    example: true
+        '401':
+          description: Autenticação falhou
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Resultado da autenticação
+                    example: false
   # agenda
   /agenda:
     get:
@@ -307,20 +359,17 @@ paths:
                   type: number
                 Status:
                   type: string
-                Justificativa:
-                  type: string
               required:
                 - ID_Paciente
                 - ID_Agenda
                 - Status
-                - Justificativa
       responses:
         "201":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/agendamento"    
+                $ref: "#/components/schemas/novoAgendamento"    
   /agendamento/cancela:
     put:
       summary: Cancela o agendamento com justificativa.
@@ -382,7 +431,7 @@ paths:
               content:
                 application/json:
                   schema:
-                    $ref: "#/components/schemas/agendamento"
+                    $ref: "#/components/schemas/novoAgendamento"
 
 components:
   securitySchemes:
@@ -423,9 +472,6 @@ components:
         senha:
           type: string
           example: "senha123"
-        modified:
-          type: string
-          format: date-time
     medico:
       type: object
       properties:
@@ -472,3 +518,21 @@ components:
             - Recusado
         Justificativa:
           type: string
+          description: Justificativa para o status do agendamento cancelado pelo cliente
+          nullable: true  # Campo opcional, pode estar presente ou não
+    novoAgendamento:
+      type: object
+      properties:
+        ID_Paciente:
+          type: number
+        ID_Agenda:
+          type: number
+        Status:
+          type: string
+          enum:
+            - Confirmado
+            - Pendente
+            - Cancelado
+            - Recusado
+security:
+  - BearerAuth: []

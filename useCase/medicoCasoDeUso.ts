@@ -6,7 +6,10 @@ import IUsuario from '../interfaces/IUsuario';
 export class MedicoCasoDeUso {
 
     static async getAllMedicos(params, medicoRepository: IMedico){
-        const medicos = await medicoRepository.getAll();
+        const medicos = await medicoRepository.getAll(params);
+        if (medicos == null) {
+            throw new BadRequestError("Não foi encontrado nenhum médico com essa especialidade.");
+        }
         return medicos;
     }
 
@@ -20,7 +23,7 @@ export class MedicoCasoDeUso {
     static async autenticarMedico(crm: number,senha:string, usuarioRepository:IUsuario ,medicoRepository: IMedico) {
         
         let medico = await medicoRepository.findByCRM(crm);
-        console.log(medico);
+
         if (medico === null) {
             throw new BadRequestError("CRM não cadastrado.");
         }
