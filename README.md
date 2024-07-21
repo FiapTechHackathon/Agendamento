@@ -177,6 +177,15 @@ Acima esta composto a nossa engenharia de banco de dados, como podemos ver terem
 
 Adicionei tambem o S3 pos podemos usar ele no sistema de armazenamento de dados, se por acaso em algum momento A Health&Med criar uma equipe de B.I sendo possivel assim criar um fluxo de DataWare House com o GLUE consultando dados de um BUCKET, esse processo será robusto e mais barato para a empresa.
 
+### COMUNICAÇÃO ENTRE SERVIÇOS
+![](Data%20engenering-Arquitetura%20de%20sincronização%20microservice.drawio.svg)
+
+Adicionado o padrão saga pois temos alguns processos que vão exigir mais do software então foi decidido também usar o KAFKA para garantir que os serviços estejam conextados ao topico e que tambem executem com sucesso, em caso de erro será devolvida para a fila e feita a comunicação de falha, 
+Nesse contexto o kafka será uma otima ferramenta para os processos mais pesados e deixa-los assim em segundo plano.
+
+Será levantado um serviço para os subscribe executarem sem carregar o processamento do ambiente de produção dos endpoints, visto que essa prática é um dos topicos de boas praticas para serviços paralelos.
+
+
 ## Pipeline de CI.
 Na Imagem esta sendo mostrado o Pipeline de DEV com testes automatizados e também com Sonar, no caso de DEV não enviamos requisição nenhuma para deploy, somente em MAIN que montamos no kubernets a nossa imagem.
 
