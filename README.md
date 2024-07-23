@@ -112,7 +112,13 @@ git clone https://github.com/FiapTechHackathon/Agendamento.git
 
 ```bash
 docker-compose up -d --build
+```
 
+4. Install Packages
+
+```bash
+npm install
+```
 ## Running tests
 
 Aplicação realiza testes unitários com ...
