@@ -37,8 +37,8 @@ export default class Server {
         this.app.route('/').get((req, res) => {
             res.json({
                 'version': '1.0.0',
-                "app": "APP Agendamentos",
-                'date': '2024-03-18'
+                "app": "APP Agendamentos Hackathon FIAP",
+                'date': '2024-07-23'
             });
         });
 
