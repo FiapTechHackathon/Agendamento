@@ -4,7 +4,7 @@ name: Health & Med - CI
 on:
   push:
     branches: [ "dev", "main" ]
-
+    
 jobs:
   Build-and-Test:
     name: Construindo Imagem
@@ -20,7 +20,6 @@ jobs:
     -
       name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
-
     - 
       name: Configure AWS credentials
       if: ${{github.ref_name == 'main'}}
@@ -58,16 +57,9 @@ jobs:
     needs: Build-and-Test
     steps:
     - uses: actions/checkout@v3
-
     - name: "Construir imagem Docker"
       run: |
-        docker-compose up -d
-      # env:
-      #   MP_URL: ${{ vars.MP_URL }}
-      #   MP_CLIENT_SECRET: ${{ secrets.MP_CLIENT_SECRET }}
-      #   MP_CLIENT_ID: ${{ secrets.MP_CLIENT_ID }}
-      #   MP_NOTIFICATION_URL: ${{ vars.MP_NOTIFICATION_URL }}
-        
+        docker-compose up -d        
     - name: "Unit Test" 
       run: docker run docker.io/library/agendamento_web npm test
    
@@ -111,7 +103,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 
-
       - name: Dispatch Manual Event to Deploy Kubernets
         run: | 
               curl -L \
