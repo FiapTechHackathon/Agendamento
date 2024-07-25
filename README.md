@@ -196,8 +196,8 @@ Aplicação realiza testes unitários com ...
 ```json
 {
   "Data": "2024-07-20",
-  "HoraInicio": "string",
-  "HoraFim": "string",
+  "HoraInicio": "08:00",
+  "HoraFim": "09:00",
   "disponivel": "disponivel",
   "IdMedico": 1,
   "Valor": 200
@@ -211,8 +211,8 @@ Aplicação realiza testes unitários com ...
 ```json
 {
   "Data": "2024-07-20",
-  "HoraInicio": "string",
-  "HoraFim": "string"
+  "HoraInicio": "08:00",
+  "HoraFim": "09:00",
 }
 ```
 ### Recupera uma lista de agenda disponíveis.
@@ -228,7 +228,7 @@ Aplicação realiza testes unitários com ...
   "ID_Paciente": 1,
   "ID_Agenda": 1,
   "Status": "PENDENTE",
-  "Justificativa": "string"
+  "Justificativa": ""
 }
 ```
 
@@ -283,10 +283,26 @@ Rota para solicitação de exclusão de dados da plataforma:
 ## CI / CD
 Criamos dois repositórios para fazer o deploy no CD é aonde concentramos o Deploy com toda a parte do Kubernets e foi nomeado de kubernets-manifest e la deixamos todos os arquivos de aplicação que possivelmente iremos criar um projeto, no segundo repositório é aonde temos a esteira do CI que é da propria aplicação e nela temos todas as validações como teste unitários, integração e end-to-end e também a análise de código com o SonarCloud.
 
-[Video da esteira de deploy CI & CD](https://www.loom.com/share/e1728eb584734bbdadb678b35b18b5ca)
+#### Video da esteira de deploy CI & CD 
 
-[Demonstração da Infraestrutura na AWS e seu Funcionamento](https://www.loom.com/share/7dabea36507b482c9856543ce059dae9)
+https://www.loom.com/share/e1728eb584734bbdadb678b35b18b5ca
 
+#### Demonstração da Infraestrutura na AWS e seu Funcionamento
+https://www.loom.com/share/7dabea36507b482c9856543ce059dae9
+
+#### Demonstração da aplicação
+
+https://www.loom.com/share/b83867be42b844a186799a8a6d567f7b
+
+- Autenticação do Usuário (Médico)
+- Cadastro/Edição de Horários Disponíveis (Médico)
+- Autenticação do Usuário (Paciente)
+- Busca por Médicos (Paciente)
+- Agendamento de Consultas (Paciente)
+
+https://www.loom.com/share/067da07dd7cf4c7083290e37efe8b1c3
+
+- Aceite ou Recusa de Consultas Médicas - Médico
 
 
 ## AWS :: Componentes
