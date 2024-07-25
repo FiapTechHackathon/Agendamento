@@ -19,9 +19,6 @@ class medico {
       if (!especialidade) {
         throw new BadRequestError("Especialidade é obrigatória.");
       }
-      if (!especialidade || !Object.values(especialidadeMedico).includes(especialidade)) {
-        throw new BadRequestError("Especialidade é obrigatória e deve ser uma das especialidades válidas");
-    }
     //   if (!this.idUsuario || isNaN(this.idUsuario)) {
     //     throw new BadRequestError('ID do usuário é obrigatório e deve ser um número.');
     // }

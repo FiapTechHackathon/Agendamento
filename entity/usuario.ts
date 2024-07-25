@@ -18,9 +18,6 @@ class Usuario {
     }
 
     private validate() {
-        if (!this.senhaHash) {
-            throw new BadRequestError('Senha é obrigatória.');
-        }
     }
 
     public hashPassword(senha: string): string {
