@@ -272,7 +272,7 @@ Aplicação realiza testes unitários com ...
 [Miro DDD](https://miro.com/app/board/uXjVKyVj5Tc=/)
 
 ## Relatório RPID LGPD:
-- [RPID LGPD]()
+- [RPID LGPD](https://github.com/FiapTechHackathon/Agendamento/blob/main/LGPD/RIPD-Health%26Med.pdf)
 
 Rota para solicitação de exclusão de dados da plataforma:
 
