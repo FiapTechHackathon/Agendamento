@@ -280,6 +280,15 @@ Rota para solicitação de exclusão de dados da plataforma:
 
 [Rota adicionada](https://github.com/FiapTechHackathon/Agendamento/blob/main/application/api/routes/UsuariosDesabilitarRoutes.ts)
 
+## CI / CD
+Criamos dois repositórios para fazer o deploy no CD é aonde concentramos o Deploy com toda a parte do Kubernets e foi nomeado de kubernets-manifest e la deixamos todos os arquivos de aplicação que possivelmente iremos criar um projeto, no segundo repositório é aonde temos a esteira do CI que é da propria aplicação e nela temos todas as validações como teste unitários, integração e end-to-end e também a análise de código com o SonarCloud.
+
+[Video da esteira de deploy CI & CD](https://www.loom.com/share/e1728eb584734bbdadb678b35b18b5ca)
+
+[Demonstração da Infraestrutura na AWS e seu Funcionamento](https://www.loom.com/share/7dabea36507b482c9856543ce059dae9)
+
+
+
 ## AWS :: Componentes
 ### Versão Completa
 ![AWS Componentes versão full](AWS%20-%20Componentes%20versão%20full.drawio.png)
